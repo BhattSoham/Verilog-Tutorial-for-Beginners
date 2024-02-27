@@ -1,0 +1,58 @@
+#! /usr/bin/vvp
+:ivl_version "10.3 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x55939f00ad80 .scope module, "half_adder_tb" "half_adder_tb" 2 2;
+ .timescale 0 0;
+v0x55939f01b560_0 .var "a", 0 0;
+v0x55939f01b620_0 .var "b", 0 0;
+v0x55939f01b6f0_0 .net "carry", 0 0, L_0x55939f01ba20;  1 drivers
+v0x55939f01b7f0_0 .net "sum", 0 0, L_0x55939f01b8c0;  1 drivers
+S_0x55939f00af00 .scope module, "uut" "half_adder" 2 9, 3 1 0, S_0x55939f00ad80;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /OUTPUT 1 "sum"
+    .port_info 3 /OUTPUT 1 "carry"
+L_0x55939f01b8c0 .functor XOR 1, v0x55939f01b560_0, v0x55939f01b620_0, C4<0>, C4<0>;
+L_0x55939f01ba20 .functor AND 1, v0x55939f01b560_0, v0x55939f01b620_0, C4<1>, C4<1>;
+v0x55939efd50e0_0 .net "a", 0 0, v0x55939f01b560_0;  1 drivers
+v0x55939f01b260_0 .net "b", 0 0, v0x55939f01b620_0;  1 drivers
+v0x55939f01b320_0 .net "carry", 0 0, L_0x55939f01ba20;  alias, 1 drivers
+v0x55939f01b3f0_0 .net "sum", 0 0, L_0x55939f01b8c0;  alias, 1 drivers
+    .scope S_0x55939f00ad80;
+T_0 ;
+    %vpi_call 2 13 "$dumpfile", "half_adder.vcd" {0 0 0};
+    %vpi_call 2 14 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x55939f00ad80 {0 0 0};
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55939f01b560_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55939f01b620_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55939f01b560_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55939f01b620_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55939f01b560_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55939f01b620_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55939f01b560_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55939f01b620_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "half_adder_tb.v";
+    "./half_adder.v";
